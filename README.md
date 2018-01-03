@@ -1,1 +1,2 @@
 # FinalProject17
+# This game, based on the famous story of Dante's Inferno, allows the player to become Dante himself and travel through the nine circles of Hell. The protagonist can interact with residents in each circle, explore his/her surroundings, and move throughout each level with the end goal of fighting the Devil. Fights with the many enemies the player will encounter during the game occur as a text-based battle where the player and the enemy take turns attacking.
