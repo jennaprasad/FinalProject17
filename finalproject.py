@@ -7,18 +7,22 @@ class Resident(object):
         self.name=name
         self.bio=bio
         self.gift=gift
-socrates=Resident('Socrates', '', '3 coins')
-cleopatra=Resident('Cleopatra', '', '3 coins')
-ciacco=Resident('Ciacco', '', '3 coins')
-avaricious=Resident('Avaricious', '', '3 coins')
-filippo=Resident('Filippo Argenti', '', '3 coins')
-epicurus=Resident('Epicurus', '', '3 coins')
-alexander=Resident('Alexander the Great', '', '3 coins')
-ulysses=Resident('Ulysses', '', '3 coins')
-judas=Resident('Judas', '', '3 apples')
+socrates=Resident('Socrates', 'insert dialogue here', '3 coins')
+cleopatra=Resident('Cleopatra', 'insert dialogue here', '3 coins')
+ciacco=Resident('Ciacco', 'insert dialogue here', '3 coins')
+avaricious=Resident('Avaricious', 'insert dialogue here', '3 coins')
+filippo=Resident('Filippo Argenti', 'insert dialogue here', '3 coins')
+epicurus=Resident('Epicurus', 'insert dialogue here', '3 coins')
+alexander=Resident('Alexander the Great', 'insert dialogue here', '3 coins')
+ulysses=Resident('Ulysses', 'insert dialogue here', '3 coins')
+judas=Resident('Judas', 'insert dialogue here', '3 apples')
 
 def introduce(self):
-    print(f"My name is {self.name}. {self.bio}. You have a long journey ahead-- take these.")
+    print(f'"My name is {self.name}. {self.bio}. You have a long journey ahead-- take these."')
+    print('---')
+    print(f'You get {self.gift}.')
+    inventory[coins]+=3
+    print(inventory)
 
 class Boss(object):
     def __init__(self, name2, stats, attack):
@@ -36,39 +40,132 @@ geryon=Boss('Geryon', 'hp 120', '')
 devil=Boss('Devil', 'hp 150', '')
 
 def guard(self):
-    print(f"{self.name} guards the door to the next level.")
+    print("You are close to the end. You see a gateway up ahead and a figure blocking the entrance.")
     print("---")
-    print(f"{self.stats}, {self.attack}")
+    print(f"{self.name2} guards the door to the next level.")
+    print("---")
+    print(f"{self.name2}: {self.stats}, {self.attack}")
 
 class Level(object):
     def __init__(self, name3, level, description):
         self.name3=name3
         self.level=level
         self.description=description
-one=Level('Limbo', 'Level 1', '')
-two=Level('Lust', 'Level 2', '')
-three=Level('Gluttony', 'Level 3', '')
-four=Level('Greed', 'Level 4', '')
-five=Level('Wrath', 'Level 5', '')
-six=Level('Heresy', 'Level 6', '')
-seven=Level('Violence', 'Level 7', '')
-eight=Level('Malebolge', 'Level 8', '')
-nine=Level('Treachery', 'Level 9', '')
+one=Level('Limbo', 'Level 1', 'insert description here')
+two=Level('Lust', 'Level 2', 'insert description here')
+three=Level('Gluttony', 'Level 3', 'insert description here')
+four=Level('Greed', 'Level 4', 'insert description here')
+five=Level('Wrath', 'Level 5', 'insert description here')
+six=Level('Heresy', 'Level 6', 'insert description here')
+seven=Level('Violence', 'Level 7', 'insert description here')
+eight=Level('Malebolge', 'Level 8', 'insert description here')
+nine=Level('Treachery', 'Level 9', 'insert description here')
 
 def enter(self):
     print(f"Enter {self.level}: {self.name3}")
 
+funny={'one': 'As you walk, you approach a body of water. You peer over the edge to see what lurks below. Whoops. You slip into the River Acheron. You klutz.', 'two': '', 'three': '', 'four': '', 'five': '', 'six': '', 'seven': '', 'eight': '', 'nine':''}
+
 inventory={'coins': 10, 'apples': 3}
 
-
-#start
+#START GAME
 
 print("You have fallen into Hell. Survive the nine levels to escape.")
 print("---")
 print(f"{player_stats}")
 print(f"{inventory}")
+print("Apples heal 10hp. Use them wisely.")
 enter(one)
 print(f"{one.description}")
 print("---")
 print('To keep walking, press "w". To shop, press "s". If a resident of Hell approaches, press "t" to talk.')
-print('Continue walking ("w") or shop ("s")?')
+while True:
+    choice=(input('Continue walking ("w") or shop ("s")? ')).lower()
+    if choice=='s':
+        print("You have entered the shop.")
+        print(inventory)
+        print("5 coins for an apple.")
+        shop=input('Would you like to buy apples? y/n ').lower()
+        if shop=='y':
+            apple_amount=int(input('How many apples? '))
+            inventory['apples']+=apple_amount
+            inventory['coins']-=apple_amount*5
+            print(inventory)
+            print("You have exited the shop.")
+    elif choice=='w':
+        print("You keep walking.")
+        break
+    else:
+        print("Choose a valid response.")
+
+print('As you walk, you see someone approaching in the distance.')
+while True:
+    choice=(input('Talk ("t"), continue walking ("w") or shop ("s")? ')).lower()
+    if choice=='s':
+        print("You have entered the shop.")
+        print(inventory)
+        print("5 coins for an apple.")
+        shop=input('Would you like to buy apples? y/n ').lower()
+        if shop=='y':
+            apple_amount=int(input('How many apples? '))
+            inventory['apples']+=apple_amount
+            inventory['coins']-=apple_amount*5
+            print(inventory)
+            print("You have exited the shop.")
+    elif choice=='w':
+        print("You keep walking.")
+        break
+    elif choice=='t':
+        print("You choose to talk to the stranger.")
+        print("---")
+        introduce(socrates)
+        print("---")
+        print("Socrates vanishes.")
+        print('---')
+        while True:
+            choice=(input('Continue walking ("w") or shop ("s")? ')).lower()
+            if choice=='s':
+                print("You have entered the shop.")
+                print(inventory)
+                print("5 coins for an apple.")
+                shop=input('Would you like to buy apples? y/n ').lower()
+                if shop=='y':
+                    apple_amount=int(input('How many apples? '))
+                    inventory['apples']+=apple_amount
+                    inventory['coins']-=apple_amount*5
+                    print(inventory)
+                    print("You have exited the shop.")
+            elif choice=='w':
+                print("You keep walking.")
+                break
+            else:
+                print("Choose a valid response.")
+        break
+    else:
+        print("Choose a valid response.")
+
+print('---')
+print(funny['one'])
+print('---')
+
+while True:
+    choice=(input('Continue walking ("w") or shop ("s")? ')).lower()
+    if choice=='s':
+        print("You have entered the shop.")
+        print(inventory)
+        print("5 coins for an apple.")
+        shop=input('Would you like to buy apples? y/n ').lower()
+        if shop=='y':
+            apple_amount=int(input('How many apples? '))
+            inventory['apples']+=apple_amount
+            inventory['coins']-=apple_amount*5
+            print(inventory)
+            print("You have exited the shop.")
+    elif choice=='w':
+        print("You keep walking.")
+        break
+    else:
+        print("Choose a valid response.")
+
+guard(charon)
+
