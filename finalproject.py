@@ -18,7 +18,7 @@ ulysses=Resident('Ulysses', 'insert dialogue here', '3 coins')
 judas=Resident('Judas', 'insert dialogue here', '3 apples')
 
 def introduce(self):
-    print(f'"My name is {self.name}. {self.bio}. You have a long journey ahead-- take these."')
+    print(f'Resident: "My name is {self.name}. {self.bio}. You have a long journey ahead-- take these."')
     print('---')
     print(f'You get {self.gift}.')
     inventory['coins']+=3
