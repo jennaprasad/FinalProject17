@@ -1,6 +1,6 @@
 player_hp=100
 player_attack=10
-player_stats=(f"Health: {player_hp}, Attack: {player_attack}")
+player_stats=(f"Hp: {player_hp}, Attack: {player_attack}")
 
 class Resident(object):
     def __init__(self, name, bio, gift):
@@ -21,7 +21,7 @@ def introduce(self):
     print(f'"My name is {self.name}. {self.bio}. You have a long journey ahead-- take these."')
     print('---')
     print(f'You get {self.gift}.')
-    inventory[coins]+=3
+    inventory['coins']+=3
     print(inventory)
 
 class Boss(object):
@@ -45,6 +45,8 @@ def guard(self):
     print(f"{self.name2} guards the door to the next level.")
     print("---")
     print(f"{self.name2}: {self.stats}, {self.attack}")
+
+
 
 class Level(object):
     def __init__(self, name3, level, description):
@@ -75,6 +77,7 @@ print("---")
 print(f"{player_stats}")
 print(f"{inventory}")
 print("Apples heal 10hp. Use them wisely.")
+print('---')
 enter(one)
 print(f"{one.description}")
 print("---")
@@ -85,19 +88,33 @@ while True:
         print("You have entered the shop.")
         print(inventory)
         print("5 coins for an apple.")
-        shop=input('Would you like to buy apples? y/n ').lower()
-        if shop=='y':
-            apple_amount=int(input('How many apples? '))
-            inventory['apples']+=apple_amount
-            inventory['coins']-=apple_amount*5
-            print(inventory)
-            print("You have exited the shop.")
+        while True:
+            shop=input('Would you like to buy apples? y/n ').lower()
+            if shop=='y':
+                apple_amount=int((input('How many apples? # ')))
+                if inventory['coins']>=apple_amount*5:
+                    inventory['apples']+=apple_amount
+                    inventory['coins']-=apple_amount*5
+                    print(inventory)
+                    print("You have exited the shop.")
+                    break
+                else:
+                    print("You don't have enough money.")
+                    print("You have exited the shop.")
+                    break
+
+            elif shop=='n':
+                print("You have exited the shop.")
+                break
+            else:
+                print("Choose a valid response.")
     elif choice=='w':
         print("You keep walking.")
         break
     else:
         print("Choose a valid response.")
 
+print('---')
 print('As you walk, you see someone approaching in the distance.')
 while True:
     choice=(input('Talk ("t"), continue walking ("w") or shop ("s")? ')).lower()
@@ -105,13 +122,26 @@ while True:
         print("You have entered the shop.")
         print(inventory)
         print("5 coins for an apple.")
-        shop=input('Would you like to buy apples? y/n ').lower()
-        if shop=='y':
-            apple_amount=int(input('How many apples? '))
-            inventory['apples']+=apple_amount
-            inventory['coins']-=apple_amount*5
-            print(inventory)
-            print("You have exited the shop.")
+        while True:
+            shop=input('Would you like to buy apples? y/n ').lower()
+            if shop=='y':
+                apple_amount=int((input('How many apples? # ')))
+                if inventory['coins']>=apple_amount*5:
+                    inventory['apples']+=apple_amount
+                    inventory['coins']-=apple_amount*5
+                    print(inventory)
+                    print("You have exited the shop.")
+                    break
+                else:
+                    print("You don't have enough money.")
+                    print("You have exited the shop.")
+                    break
+
+            elif shop=='n':
+                print("You have exited the shop.")
+                break
+            else:
+                print("Choose a valid response.")
     elif choice=='w':
         print("You keep walking.")
         break
@@ -122,24 +152,41 @@ while True:
         print("---")
         print("Socrates vanishes.")
         print('---')
+        break
+    elif choice=='w':
+        print("You keep walking.")
+        break
+    else:
+        print("Choose a valid response.")
+
+while True:
+    choice=(input('Continue walking ("w") or shop ("s")? ')).lower()
+    if choice=='s':
+        print("You have entered the shop.")
+        print(inventory)
+        print("5 coins for an apple.")
         while True:
-            choice=(input('Continue walking ("w") or shop ("s")? ')).lower()
-            if choice=='s':
-                print("You have entered the shop.")
-                print(inventory)
-                print("5 coins for an apple.")
-                shop=input('Would you like to buy apples? y/n ').lower()
-                if shop=='y':
-                    apple_amount=int(input('How many apples? '))
+            shop=input('Would you like to buy apples? y/n ').lower()
+            if shop=='y':
+                apple_amount=int((input('How many apples? # ')))
+                if inventory['coins']>=apple_amount*5:
                     inventory['apples']+=apple_amount
                     inventory['coins']-=apple_amount*5
                     print(inventory)
                     print("You have exited the shop.")
-            elif choice=='w':
-                print("You keep walking.")
+                    break
+                else:
+                    print("You don't have enough money.")
+                    print("You have exited the shop.")
+                    break
+
+            elif shop=='n':
+                print("You have exited the shop.")
                 break
             else:
                 print("Choose a valid response.")
+    elif choice=='w':
+        print("You keep walking.")
         break
     else:
         print("Choose a valid response.")
@@ -154,13 +201,26 @@ while True:
         print("You have entered the shop.")
         print(inventory)
         print("5 coins for an apple.")
-        shop=input('Would you like to buy apples? y/n ').lower()
-        if shop=='y':
-            apple_amount=int(input('How many apples? '))
-            inventory['apples']+=apple_amount
-            inventory['coins']-=apple_amount*5
-            print(inventory)
-            print("You have exited the shop.")
+        while True:
+            shop=input('Would you like to buy apples? y/n ').lower()
+            if shop=='y':
+                apple_amount=int((input('How many apples? # ')))
+                if inventory['coins']>=apple_amount*5:
+                    inventory['apples']+=apple_amount
+                    inventory['coins']-=apple_amount*5
+                    print(inventory)
+                    print("You have exited the shop.")
+                    break
+                else:
+                    print("You don't have enough money.")
+                    print("You have exited the shop.")
+                    break
+
+            elif shop=='n':
+                print("You have exited the shop.")
+                break
+            else:
+                print("Choose a valid response.")
     elif choice=='w':
         print("You keep walking.")
         break
