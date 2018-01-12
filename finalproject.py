@@ -1,6 +1,23 @@
-player_hp=100
-player_attack=10
-player_stats=(f"Hp: {player_hp}, Attack: {player_attack}")
+import random
+inventory={'coins': 10, 'apples': 3}
+class Player(object):
+    def __init__(self, hp, attack):
+        self.hp=hp
+        self.attack=attack
+player=Player(100, (7,13))
+def stats(self):
+    print(f"Health: {self.hp}")
+
+def attack(boss):
+    boss.hp-=random.randint(7,13)
+
+def heal(self):
+    self.hp+=10
+    inventory['apples']-=1
+    print(f" You chose to heal. Your hp is now {self.hp}. You have {inventory['apples']} left.")
+
+def stats(player):
+    print(f'Hp: {player.hp}')
 
 class Resident(object):
     def __init__(self, name, bio, gift):
@@ -25,27 +42,32 @@ def introduce(self):
     print(inventory)
 
 class Boss(object):
-    def __init__(self, name2, stats, attack):
+    def __init__(self, name2, description, hp, attack2):
         self.name2=name2
-        self.stats=stats
-        self.attack=attack
-charon=Boss('Charon', 'hp 50', '')
-minos=Boss('Minos', 'hp 60', '')
-cereberus=Boss('Cereberus', 'hp 70', '')
-plutus=Boss('Plutus', 'hp 80', '')
-phlegyas=Boss('Phlegyas', 'hp 90', '')
-demon=Boss('Guard Demon', 'hp 100', '')
-centaurus=Boss('Centaurus', 'hp 110', '')
-geryon=Boss('Geryon', 'hp 120', '')
-devil=Boss('Devil', 'hp 150', '')
+        self.description=description
+        self.hp=hp
+        self.attack2=attack
+
+charon=Boss('Charon', '', 50, (7,13))
+minos=Boss('Minos', '', 60, [7,13])
+cereberus=Boss('Cereberus', '', 70, [7,13])
+plutus=Boss('Plutus', '', 80, [7,13])
+phlegyas=Boss('Phlegyas', '', 90, [7,13])
+demon=Boss('Guard Demon', '', 100, [7,13])
+centaurus=Boss('Centaurus', '', 110, [7,13])
+geryon=Boss('Geryon', '', 120, [7,13])
+devil=Boss('Devil', '', 150, [7,13])
 
 def guard(self):
     print("You are close to the end. You see a gateway up ahead and a figure blocking the entrance.")
     print("---")
     print(f"{self.name2} guards the door to the next level.")
     print("---")
-    print(f"{self.name2}: {self.stats}, {self.attack}")
+    print(f"{self.name2}: {self.description}")
+    print(f'Hp: {self.hp}')
 
+def attack2(player):
+    player.hp=-random.randint(7,13)
 
 
 class Level(object):
@@ -68,13 +90,12 @@ def enter(self):
 
 funny={'one': 'As you walk, you approach a body of water. You peer over the edge to see what lurks below. Whoops. You slip into the River Acheron. You klutz.', 'two': '', 'three': '', 'four': '', 'five': '', 'six': '', 'seven': '', 'eight': '', 'nine':''}
 
-inventory={'coins': 10, 'apples': 3}
 
 #START GAME
 
 print("You have fallen into Hell. Survive the nine levels to escape.")
 print("---")
-print(f"{player_stats}")
+stats(player)
 print(f"{inventory}")
 print("Apples heal 10hp. Use them wisely.")
 print('---')
@@ -229,3 +250,43 @@ while True:
 
 guard(charon)
 
+print(f'Player: {player.hp}, Charon: {charon.hp}')
+while charon.hp>0 and player.hp>0:
+    print(f'Player: player.hp, Charon: charon.hp')
+    battle=input(("Attack ('a') or heal ('h')? ")).lower()
+    if battle=='a':
+        print('---')
+        attack(charon)
+        print(f"You attack {charon.name2}.")
+        print('---')
+        print(f'Player: {player.hp}, Charon: {charon.hp}')
+        charon.attack2
+        print('---')
+        print('---')
+        print('Charon attacks you.')
+        print('---')
+        print(f'Player: {player.hp}, Charon: {charon.hp}')
+    elif battle=='h':
+        print('---')
+        heal(player)
+        print(f"You ate an apple.")
+        print('---')
+        print(f'Player hp: {player.hp}, Charon hp: {charon.hp}')
+        print('---')
+        print('---')
+        charon.attack2
+        print('Charon attacks you.')
+        print('---')
+        print(f'Player hp: {player.hp}, Charon hp: {charon.hp}')
+    else:
+        print('---')
+        print("Choose a valid response.")
+    if charon.hp<=0:
+        print('---')
+        print("You've defeated the boss!")
+        break
+    if player.hp<=0:
+        print('---')
+        print("Your hp is 0. Game Over.")
+        enter(one)
+        break
