@@ -1,5 +1,5 @@
 import random
-inventory={'coins': 100, 'apples': 10}
+inventory={'coins': 200, 'apples': 10}
 #defines inventory with coins and apples
 class Player(object):
     def __init__(self, hp, attack):
@@ -209,49 +209,50 @@ def play_level(one):
                     print("Choose a valid response.")
             #same shopping loop
         elif choice=='w':
-        #same process/documentation as before
+            #same process/documentation as before
             print("You keep walking.")
             break
         elif choice=='t':
-        #lets the character talk to the Resident
-            print("You choose to talk to the stranger.")
-            print("---")
-            introduce(socrates)
-            #calls introduce function
-            print("---")
-            print("Socrates vanishes.")
-            print('---')
-            choice=(input('Continue walking ("w") or shop ("s")? ')).lower()
-            if choice=='s':
-                print("You have entered the shop.")
-                print(inventory)
-                print("5 coins for an apple.")
-                while True:
-                    shop=input('Would you like to buy apples? y/n ').lower()
-                    if shop=='y':
-                        apple_amount=int((input('How many apples? # ')))
-                        if inventory['coins']>=apple_amount*5:
-                            inventory['apples']+=apple_amount
-                            inventory['coins']-=apple_amount*5
-                            print(inventory)
+            #lets the character talk to the Resident
+                print("You choose to talk to the stranger.")
+                print("---")
+                introduce(socrates)
+                #calls introduce function
+                print("---")
+                print("Socrates vanishes.")
+                print('---')
+                choice=(input('Continue walking ("w") or shop ("s")? ')).lower()
+                if choice=='s':
+                    print("You have entered the shop.")
+                    print(inventory)
+                    print("5 coins for an apple.")
+                    while True:
+                        shop=input('Would you like to buy apples? y/n ').lower()
+                        if shop=='y':
+                            apple_amount=int((input('How many apples? # ')))
+                            if inventory['coins']>=apple_amount*5:
+                                inventory['apples']+=apple_amount
+                                inventory['coins']-=apple_amount*5
+                                print(inventory)
+                                print("You have exited the shop.")
+                                break
+                            else:
+                                print("You don't have enough money.")
+                                print("You have exited the shop.")
+                                break
+
+                        elif shop=='n':
                             print("You have exited the shop.")
                             break
                         else:
-                            print("You don't have enough money.")
-                            print("You have exited the shop.")
-                            break
+                            print("Choose a valid response.")
 
-                    elif shop=='n':
-                        print("You have exited the shop.")
-                        break
-                    else:
-                        print("Choose a valid response.")
-            elif choice=='w':
-                print("You keep walking.")
-                break
-            else:
-                print("Choose a valid response.")
-        #lets the character proceed after talking by going back to the original loop
+                elif choice=='w':
+                    print("You keep walking.")
+                    break
+                else:
+                    print("Choose a valid response.")
+            #lets the character proceed after talking by going back to the original loop
 
     print('---')
     print(funny['one'])
@@ -1046,6 +1047,7 @@ def play_level(four):
                         break
                     else:
                         print("Choose a valid response.")
+                    break
             elif choice=='w':
                 print("You keep walking.")
                 break
@@ -1187,13 +1189,13 @@ print('---')
 
 def play_level(five):
 #level function
-    if player.hp<0:
+    if player.hp<=0:
         player.hp=100
         charon.hp=90
     #if the player games over, they restart with full health
-    enter(one)
+    enter(five)
     #prints title for level
-    print(f"{one.description}")
+    print(f"{five.description}")
     #prints level description
     print("---")
     print('To keep walking, press "w". To shop, press "s". If a resident of Hell approaches, press "t" to talk.')
@@ -1446,3 +1448,1070 @@ print('You pass through the doorway to the next level.')
 print('---')
 print('---')
 #segway to the next level
+
+
+###LEVEL 6
+
+
+def play_level(six):
+#level function
+    if player.hp<=0:
+        player.hp=100
+        demon.hp=100
+    #if the player games over, they restart with full health
+    enter(six)
+    #prints title for level
+    print(f"{six.description}")
+    #prints level description
+    print("---")
+    print('To keep walking, press "w". To shop, press "s". If a resident of Hell approaches, press "t" to talk.')
+    #game tutorial basically
+    while True:
+    #player has choices to progress in the game
+        choice=(input('Continue walking ("w") or shop ("s")? ')).lower()
+        #player can continue walking or shop based on what they input
+        if choice=='s':
+        #if player chooses to shop, they enter a while loop
+            print("You have entered the shop.")
+            print(inventory)
+            #displays inventory
+            print("5 coins for an apple.")
+            while True:
+                shop=input('Would you like to buy apples? y/n ').lower()
+                #lets player choose to buy apples
+                if shop=='y':
+                    apple_amount=int((input('How many apples? # ')))
+                    #player inputs an amount (integer)
+                    if inventory['coins']>=apple_amount*5:
+                    #tests if the player has enough money
+                        inventory['apples']+=apple_amount
+                        #increases player's amout of apples based on the number they chose to buy
+                        inventory['coins']-=apple_amount*5
+                        #inventory coins are taken away based on the number of apples
+                        print(inventory)
+                        print("You have exited the shop.")
+                        break
+                        #shows the inventory and leaves the shop by breaking out of the loop
+                    else:
+                        print("You don't have enough money.")
+                        print("You have exited the shop.")
+                        break
+                    #if he/she doesn't have enough money, he/she breaks out of the loop
+
+                elif shop=='n':
+                    print("You have exited the shop.")
+                    break
+                    #breaks out of loop and leaves the shop if the character says no
+                else:
+                    print("Choose a valid response.")
+        elif choice=='w':
+            print("You keep walking.")
+            break
+            #same thing as before
+        else:
+            print("Choose a valid response.")
+
+    print('---')
+    print('As you walk, you see someone approaching in the distance.')
+    #prints dialogue that lets player know there's someone to talk to
+    while True:
+        choice=(input('Talk ("t"), continue walking ("w") or shop ("s")? ')).lower()
+        #now gives option to talk too
+        if choice=='s':
+        #same process/documentation as before
+            print("You have entered the shop.")
+            print(inventory)
+            print("5 coins for an apple.")
+            while True:
+                shop=input('Would you like to buy apples? y/n ').lower()
+                if shop=='y':
+                    apple_amount=int((input('How many apples? # ')))
+                    if inventory['coins']>=apple_amount*5:
+                        inventory['apples']+=apple_amount
+                        inventory['coins']-=apple_amount*5
+                        print(inventory)
+                        print("You have exited the shop.")
+                        break
+                    else:
+                        print("You don't have enough money.")
+                        print("You have exited the shop.")
+                        break
+
+                elif shop=='n':
+                    print("You have exited the shop.")
+                    break
+                else:
+                    print("Choose a valid response.")
+            #same shopping loop
+        elif choice=='w':
+        #same process/documentation as before
+            print("You keep walking.")
+            break
+        elif choice=='t':
+        #lets the character talk to the Resident
+            print("You choose to talk to the stranger.")
+            print("---")
+            introduce(epicurus)
+            #calls introduce function
+            print("---")
+            print("Epicurus vanishes.")
+            print('---')
+            choice=(input('Continue walking ("w") or shop ("s")? ')).lower()
+            if choice=='s':
+                print("You have entered the shop.")
+                print(inventory)
+                print("5 coins for an apple.")
+                while True:
+                    shop=input('Would you like to buy apples? y/n ').lower()
+                    if shop=='y':
+                        apple_amount=int((input('How many apples? # ')))
+                        if inventory['coins']>=apple_amount*5:
+                            inventory['apples']+=apple_amount
+                            inventory['coins']-=apple_amount*5
+                            print(inventory)
+                            print("You have exited the shop.")
+                            break
+                        else:
+                            print("You don't have enough money.")
+                            print("You have exited the shop.")
+                            break
+
+                    elif shop=='n':
+                        print("You have exited the shop.")
+                        break
+                    else:
+                        print("Choose a valid response.")
+            elif choice=='w':
+                print("You keep walking.")
+                break
+            else:
+                print("Choose a valid response.")
+        #lets the character proceed after talking by going back to the original loop
+
+    print('---')
+    print(funny['six'])
+    print('---')
+    #prints the intermission
+
+    while True:
+        choice=(input('Continue walking ("w") or shop ("s")? ')).lower()
+        if choice=='s':
+            print("You have entered the shop.")
+            print(inventory)
+            print("5 coins for an apple.")
+            while True:
+                shop=input('Would you like to buy apples? y/n ').lower()
+                if shop=='y':
+                    apple_amount=int((input('How many apples? # ')))
+                    if inventory['coins']>=apple_amount*5:
+                        inventory['apples']+=apple_amount
+                        inventory['coins']-=apple_amount*5
+                        print(inventory)
+                        print("You have exited the shop.")
+                        break
+                    else:
+                        print("You don't have enough money.")
+                        print("You have exited the shop.")
+                        break
+
+                elif shop=='n':
+                    print("You have exited the shop.")
+                    break
+                else:
+                    print("Choose a valid response.")
+        elif choice=='w':
+            print("You keep walking.")
+            break
+        else:
+            print("Choose a valid response.")
+    #all the same exact thing
+
+    guard(demon)
+    #calls guard function
+
+    while True:
+        if demon.hp<=0:
+            print('---')
+            print('Demon hp: 0')
+            print('---')
+            print("You've defeated the boss!")
+            #game progresses if boss runs out of hp
+            break
+            #proceeds to the next level
+        elif player.hp<=0:
+            print('---')
+            print("Your hp is 0. Game Over.")
+            print('---')
+            #Game over if player runs out of hp
+            play_level(six)
+            #calls function to restart the level
+        elif player.hp>0 and demon.hp>0:
+            print(f'Player: hp {player.hp}, Demon: hp {demon.hp}')
+            print('---')
+            while True:
+                battle=input(("Attack ('a') or heal ('h')? ")).lower()
+                #player can choose to attack or heal
+                if battle=='a':
+                #if player chooses to attack, he/she enters a while loop
+                    print('---')
+                    attack(demon)
+                    #calls attack function
+                    print(f"You attack {demon.name2}.")
+                    print('---')
+                    if demon.hp<0:
+                        break
+                        #if the character beats the boss, they proceed to the next level
+                    else:
+                        print(f'Player: {player.hp}, Demon: {demon.hp}')
+                        #prints stats
+                    attack1(player)
+                    #calls attack function
+                    print('---')
+                    print('---')
+                    print('Demon attacks you.')
+                    print('---')
+                    if player.hp<0:
+                        break
+                        #breaks out of the loop if player loses all his/her health
+                    else:
+                        print(f'Player: {player.hp}, Demon: {demon.hp}')
+                        #prints stats
+                        break
+                        #breaks out of the loop
+                elif battle=='h':
+                #if player chooses to heal, the code enters a while loop
+                    print('---')
+                    while True:
+                    #while loop so the player can eat an apple only if he/she has enough
+                        if inventory['apples']>0:
+                            print(f"You ate an apple.")
+                            #has player eat apple if they have apples to eat
+                            heal(player)
+                            #calls heal function
+                            print('---')
+                            print(f'Player hp: {player.hp}, Demon hp: {demon.hp}')
+                            #prints player and boss hp
+                            print('---')
+                            print('---')
+                            break
+                            #breaks out of the function
+                        else:
+                            print("You don't have any apples.")
+                            print('--')
+                            break
+                        #if the player has no apples, this prints
+                else:
+                    print('---')
+                    print("Choose a valid response.")
+                    print('---')
+                #if they type an invalid response, this prints
+play_level(six)
+#calls the function
+
+print('---')
+print('---')
+print('You pass through the doorway to the next level.')
+print('---')
+print('---')
+#segway to the next level
+
+
+###LEVEL 7
+
+
+def play_level(seven):
+#level function
+    if player.hp<=0:
+        player.hp=100
+        centaurus.hp=110
+    #if the player games over, they restart with full health
+    enter(seven)
+    #prints title for level
+    print(f"{seven.description}")
+    #prints level description
+    print("---")
+    print('To keep walking, press "w". To shop, press "s". If a resident of Hell approaches, press "t" to talk.')
+    #game tutorial basically
+    while True:
+    #player has choices to progress in the game
+        choice=(input('Continue walking ("w") or shop ("s")? ')).lower()
+        #player can continue walking or shop based on what they input
+        if choice=='s':
+        #if player chooses to shop, they enter a while loop
+            print("You have entered the shop.")
+            print(inventory)
+            #displays inventory
+            print("5 coins for an apple.")
+            while True:
+                shop=input('Would you like to buy apples? y/n ').lower()
+                #lets player choose to buy apples
+                if shop=='y':
+                    apple_amount=int((input('How many apples? # ')))
+                    #player inputs an amount (integer)
+                    if inventory['coins']>=apple_amount*5:
+                    #tests if the player has enough money
+                        inventory['apples']+=apple_amount
+                        #increases player's amout of apples based on the number they chose to buy
+                        inventory['coins']-=apple_amount*5
+                        #inventory coins are taken away based on the number of apples
+                        print(inventory)
+                        print("You have exited the shop.")
+                        break
+                        #shows the inventory and leaves the shop by breaking out of the loop
+                    else:
+                        print("You don't have enough money.")
+                        print("You have exited the shop.")
+                        break
+                    #if he/she doesn't have enough money, he/she breaks out of the loop
+
+                elif shop=='n':
+                    print("You have exited the shop.")
+                    break
+                    #breaks out of loop and leaves the shop if the character says no
+                else:
+                    print("Choose a valid response.")
+        elif choice=='w':
+            print("You keep walking.")
+            break
+            #same thing as before
+        else:
+            print("Choose a valid response.")
+
+    print('---')
+    print('As you walk, you see someone approaching in the distance.')
+    #prints dialogue that lets player know there's someone to talk to
+    while True:
+        choice=(input('Talk ("t"), continue walking ("w") or shop ("s")? ')).lower()
+        #now gives option to talk too
+        if choice=='s':
+        #same process/documentation as before
+            print("You have entered the shop.")
+            print(inventory)
+            print("5 coins for an apple.")
+            while True:
+                shop=input('Would you like to buy apples? y/n ').lower()
+                if shop=='y':
+                    apple_amount=int((input('How many apples? # ')))
+                    if inventory['coins']>=apple_amount*5:
+                        inventory['apples']+=apple_amount
+                        inventory['coins']-=apple_amount*5
+                        print(inventory)
+                        print("You have exited the shop.")
+                        break
+                    else:
+                        print("You don't have enough money.")
+                        print("You have exited the shop.")
+                        break
+
+                elif shop=='n':
+                    print("You have exited the shop.")
+                    break
+                else:
+                    print("Choose a valid response.")
+            #same shopping loop
+        elif choice=='w':
+        #same process/documentation as before
+            print("You keep walking.")
+            break
+        elif choice=='t':
+        #lets the character talk to the Resident
+            print("You choose to talk to the stranger.")
+            print("---")
+            introduce(alexander)
+            #calls introduce function
+            print("---")
+            print("Alexander the Great vanishes.")
+            print('---')
+            choice=(input('Continue walking ("w") or shop ("s")? ')).lower()
+            if choice=='s':
+                print("You have entered the shop.")
+                print(inventory)
+                print("5 coins for an apple.")
+                while True:
+                    shop=input('Would you like to buy apples? y/n ').lower()
+                    if shop=='y':
+                        apple_amount=int((input('How many apples? # ')))
+                        if inventory['coins']>=apple_amount*5:
+                            inventory['apples']+=apple_amount
+                            inventory['coins']-=apple_amount*5
+                            print(inventory)
+                            print("You have exited the shop.")
+                            break
+                        else:
+                            print("You don't have enough money.")
+                            print("You have exited the shop.")
+                            break
+
+                    elif shop=='n':
+                        print("You have exited the shop.")
+                        break
+                    else:
+                        print("Choose a valid response.")
+            elif choice=='w':
+                print("You keep walking.")
+                break
+            else:
+                print("Choose a valid response.")
+        #lets the character proceed after talking by going back to the original loop
+
+    print('---')
+    print(funny['seven'])
+    print('---')
+    #prints the intermission
+
+    while True:
+        choice=(input('Continue walking ("w") or shop ("s")? ')).lower()
+        if choice=='s':
+            print("You have entered the shop.")
+            print(inventory)
+            print("5 coins for an apple.")
+            while True:
+                shop=input('Would you like to buy apples? y/n ').lower()
+                if shop=='y':
+                    apple_amount=int((input('How many apples? # ')))
+                    if inventory['coins']>=apple_amount*5:
+                        inventory['apples']+=apple_amount
+                        inventory['coins']-=apple_amount*5
+                        print(inventory)
+                        print("You have exited the shop.")
+                        break
+                    else:
+                        print("You don't have enough money.")
+                        print("You have exited the shop.")
+                        break
+
+                elif shop=='n':
+                    print("You have exited the shop.")
+                    break
+                else:
+                    print("Choose a valid response.")
+        elif choice=='w':
+            print("You keep walking.")
+            break
+        else:
+            print("Choose a valid response.")
+    #all the same exact thing
+
+    guard(centaurus)
+    #calls guard function
+
+    while True:
+        if centaurus.hp<=0:
+            print('---')
+            print('Centaurus hp: 0')
+            print('---')
+            print("You've defeated the boss!")
+            #game progresses if boss runs out of hp
+            break
+            #proceeds to the next level
+        elif player.hp<=0:
+            print('---')
+            print("Your hp is 0. Game Over.")
+            print('---')
+            #Game over if player runs out of hp
+            play_level(seven)
+            #calls function to restart the level
+        elif player.hp>0 and centaurus.hp>0:
+            print(f'Player: hp {player.hp}, Centaurus: hp {centaurus.hp}')
+            print('---')
+            while True:
+                battle=input(("Attack ('a') or heal ('h')? ")).lower()
+                #player can choose to attack or heal
+                if battle=='a':
+                #if player chooses to attack, he/she enters a while loop
+                    print('---')
+                    attack(centaurus)
+                    #calls attack function
+                    print(f"You attack {centaurus.name2}.")
+                    print('---')
+                    if centaurus.hp<0:
+                        break
+                        #if the character beats the boss, they proceed to the next level
+                    else:
+                        print(f'Player: {player.hp}, Centaurus: {centaurus.hp}')
+                        #prints stats
+                    attack1(player)
+                    #calls attack function
+                    print('---')
+                    print('---')
+                    print('Centaurus attacks you.')
+                    print('---')
+                    if player.hp<0:
+                        break
+                        #breaks out of the loop if player loses all his/her health
+                    else:
+                        print(f'Player: {player.hp}, Centaurus: {centaurus.hp}')
+                        #prints stats
+                        break
+                        #breaks out of the loop
+                elif battle=='h':
+                #if player chooses to heal, the code enters a while loop
+                    print('---')
+                    while True:
+                    #while loop so the player can eat an apple only if he/she has enough
+                        if inventory['apples']>0:
+                            print(f"You ate an apple.")
+                            #has player eat apple if they have apples to eat
+                            heal(player)
+                            #calls heal function
+                            print('---')
+                            print(f'Player hp: {player.hp}, Centaurus hp: {centaurus.hp}')
+                            #prints player and boss hp
+                            print('---')
+                            print('---')
+                            break
+                            #breaks out of the function
+                        else:
+                            print("You don't have any apples.")
+                            print('--')
+                            break
+                        #if the player has no apples, this prints
+                else:
+                    print('---')
+                    print("Choose a valid response.")
+                    print('---')
+                #if they type an invalid response, this prints
+play_level(seven)
+#calls the function
+
+print('---')
+print('---')
+print('You pass through the doorway to the next level.')
+print('---')
+print('---')
+#segway to the next level
+
+
+###LEVEL 8
+
+
+def play_level(eight):
+#level function
+    if player.hp<=0:
+        player.hp=100
+        geryon.hp=120
+    #if the player games over, they restart with full health
+    enter(eight)
+    #prints title for level
+    print(f"{eight.description}")
+    #prints level description
+    print("---")
+    print('To keep walking, press "w". To shop, press "s". If a resident of Hell approaches, press "t" to talk.')
+    #game tutorial basically
+    while True:
+    #player has choices to progress in the game
+        choice=(input('Continue walking ("w") or shop ("s")? ')).lower()
+        #player can continue walking or shop based on what they input
+        if choice=='s':
+        #if player chooses to shop, they enter a while loop
+            print("You have entered the shop.")
+            print(inventory)
+            #displays inventory
+            print("5 coins for an apple.")
+            while True:
+                shop=input('Would you like to buy apples? y/n ').lower()
+                #lets player choose to buy apples
+                if shop=='y':
+                    apple_amount=int((input('How many apples? # ')))
+                    #player inputs an amount (integer)
+                    if inventory['coins']>=apple_amount*5:
+                    #tests if the player has enough money
+                        inventory['apples']+=apple_amount
+                        #increases player's amout of apples based on the number they chose to buy
+                        inventory['coins']-=apple_amount*5
+                        #inventory coins are taken away based on the number of apples
+                        print(inventory)
+                        print("You have exited the shop.")
+                        break
+                        #shows the inventory and leaves the shop by breaking out of the loop
+                    else:
+                        print("You don't have enough money.")
+                        print("You have exited the shop.")
+                        break
+                    #if he/she doesn't have enough money, he/she breaks out of the loop
+
+                elif shop=='n':
+                    print("You have exited the shop.")
+                    break
+                    #breaks out of loop and leaves the shop if the character says no
+                else:
+                    print("Choose a valid response.")
+        elif choice=='w':
+            print("You keep walking.")
+            break
+            #same thing as before
+        else:
+            print("Choose a valid response.")
+
+    print('---')
+    print('As you walk, you see someone approaching in the distance.')
+    #prints dialogue that lets player know there's someone to talk to
+    while True:
+        choice=(input('Talk ("t"), continue walking ("w") or shop ("s")? ')).lower()
+        #now gives option to talk too
+        if choice=='s':
+        #same process/documentation as before
+            print("You have entered the shop.")
+            print(inventory)
+            print("5 coins for an apple.")
+            while True:
+                shop=input('Would you like to buy apples? y/n ').lower()
+                if shop=='y':
+                    apple_amount=int((input('How many apples? # ')))
+                    if inventory['coins']>=apple_amount*5:
+                        inventory['apples']+=apple_amount
+                        inventory['coins']-=apple_amount*5
+                        print(inventory)
+                        print("You have exited the shop.")
+                        break
+                    else:
+                        print("You don't have enough money.")
+                        print("You have exited the shop.")
+                        break
+
+                elif shop=='n':
+                    print("You have exited the shop.")
+                    break
+                else:
+                    print("Choose a valid response.")
+            #same shopping loop
+        elif choice=='w':
+        #same process/documentation as before
+            print("You keep walking.")
+            break
+        elif choice=='t':
+        #lets the character talk to the Resident
+            print("You choose to talk to the stranger.")
+            print("---")
+            introduce(ulysses)
+            #calls introduce function
+            print("---")
+            print("Ulysses vanishes.")
+            print('---')
+            choice=(input('Continue walking ("w") or shop ("s")? ')).lower()
+            if choice=='s':
+                print("You have entered the shop.")
+                print(inventory)
+                print("5 coins for an apple.")
+                while True:
+                    shop=input('Would you like to buy apples? y/n ').lower()
+                    if shop=='y':
+                        apple_amount=int((input('How many apples? # ')))
+                        if inventory['coins']>=apple_amount*5:
+                            inventory['apples']+=apple_amount
+                            inventory['coins']-=apple_amount*5
+                            print(inventory)
+                            print("You have exited the shop.")
+                            break
+                        else:
+                            print("You don't have enough money.")
+                            print("You have exited the shop.")
+                            break
+
+                    elif shop=='n':
+                        print("You have exited the shop.")
+                        break
+                    else:
+                        print("Choose a valid response.")
+            elif choice=='w':
+                print("You keep walking.")
+                break
+            else:
+                print("Choose a valid response.")
+        #lets the character proceed after talking by going back to the original loop
+
+    print('---')
+    print(funny['eight'])
+    print('---')
+    #prints the intermission
+
+    while True:
+        choice=(input('Continue walking ("w") or shop ("s")? ')).lower()
+        if choice=='s':
+            print("You have entered the shop.")
+            print(inventory)
+            print("5 coins for an apple.")
+            while True:
+                shop=input('Would you like to buy apples? y/n ').lower()
+                if shop=='y':
+                    apple_amount=int((input('How many apples? # ')))
+                    if inventory['coins']>=apple_amount*5:
+                        inventory['apples']+=apple_amount
+                        inventory['coins']-=apple_amount*5
+                        print(inventory)
+                        print("You have exited the shop.")
+                        break
+                    else:
+                        print("You don't have enough money.")
+                        print("You have exited the shop.")
+                        break
+
+                elif shop=='n':
+                    print("You have exited the shop.")
+                    break
+                else:
+                    print("Choose a valid response.")
+        elif choice=='w':
+            print("You keep walking.")
+            break
+        else:
+            print("Choose a valid response.")
+    #all the same exact thing
+
+    guard(geryon)
+    #calls guard function
+
+    while True:
+        if geryon.hp<=0:
+            print('---')
+            print('Geryon hp: 0')
+            print('---')
+            print("You've defeated the boss!")
+            #game progresses if boss runs out of hp
+            break
+            #proceeds to the next level
+        elif player.hp<=0:
+            print('---')
+            print("Your hp is 0. Game Over.")
+            print('---')
+            #Game over if player runs out of hp
+            play_level(eight)
+            #calls function to restart the level
+        elif player.hp>0 and geryon.hp>0:
+            print(f'Player: hp {player.hp}, Geryon: hp {geryon.hp}')
+            print('---')
+            while True:
+                battle=input(("Attack ('a') or heal ('h')? ")).lower()
+                #player can choose to attack or heal
+                if battle=='a':
+                #if player chooses to attack, he/she enters a while loop
+                    print('---')
+                    attack(geryon)
+                    #calls attack function
+                    print(f"You attack {geryon.name2}.")
+                    print('---')
+                    if geryon.hp<=0:
+                        break
+                        #if the character beats the boss, they proceed to the next level
+                    else:
+                        print(f'Player: {player.hp}, Geryon: {geryon.hp}')
+                        #prints stats
+                    attack1(player)
+                    #calls attack function
+                    print('---')
+                    print('---')
+                    print('Geryon attacks you.')
+                    print('---')
+                    if player.hp<=0:
+                        break
+                        #breaks out of the loop if player loses all his/her health
+                    else:
+                        print(f'Player: {player.hp}, Geryon: {geryon.hp}')
+                        #prints stats
+                        break
+                        #breaks out of the loop
+                elif battle=='h':
+                #if player chooses to heal, the code enters a while loop
+                    print('---')
+                    while True:
+                    #while loop so the player can eat an apple only if he/she has enough
+                        if inventory['apples']>0:
+                            print(f"You ate an apple.")
+                            #has player eat apple if they have apples to eat
+                            heal(player)
+                            #calls heal function
+                            print('---')
+                            print(f'Player hp: {player.hp}, Geryon hp: {geryon.hp}')
+                            #prints player and boss hp
+                            print('---')
+                            print('---')
+                            break
+                            #breaks out of the function
+                        else:
+                            print("You don't have any apples.")
+                            print('--')
+                            break
+                        #if the player has no apples, this prints
+                else:
+                    print('---')
+                    print("Choose a valid response.")
+                    print('---')
+                #if they type an invalid response, this prints
+play_level(eight)
+#calls the function
+
+print('---')
+print('---')
+print('You pass through the doorway to the next level.')
+print('---')
+print('---')
+#segway to the next level
+
+
+###LEVEL 9
+
+
+def play_level(nine):
+#level function
+    if player.hp<=0:
+        player.hp=100
+        devil.hp=130
+    #if the player games over, they restart with full health
+    enter(nine)
+    #prints title for level
+    print(f"{nine.description}")
+    #prints level description
+    print("---")
+    print('To keep walking, press "w". To shop, press "s". If a resident of Hell approaches, press "t" to talk.')
+    #game tutorial basically
+    while True:
+    #player has choices to progress in the game
+        choice=(input('Continue walking ("w") or shop ("s")? ')).lower()
+        #player can continue walking or shop based on what they input
+        if choice=='s':
+        #if player chooses to shop, they enter a while loop
+            print("You have entered the shop.")
+            print(inventory)
+            #displays inventory
+            print("5 coins for an apple.")
+            while True:
+                shop=input('Would you like to buy apples? y/n ').lower()
+                #lets player choose to buy apples
+                if shop=='y':
+                    apple_amount=int((input('How many apples? # ')))
+                    #player inputs an amount (integer)
+                    if inventory['coins']>=apple_amount*5:
+                    #tests if the player has enough money
+                        inventory['apples']+=apple_amount
+                        #increases player's amout of apples based on the number they chose to buy
+                        inventory['coins']-=apple_amount*5
+                        #inventory coins are taken away based on the number of apples
+                        print(inventory)
+                        print("You have exited the shop.")
+                        break
+                        #shows the inventory and leaves the shop by breaking out of the loop
+                    else:
+                        print("You don't have enough money.")
+                        print("You have exited the shop.")
+                        break
+                    #if he/she doesn't have enough money, he/she breaks out of the loop
+
+                elif shop=='n':
+                    print("You have exited the shop.")
+                    break
+                    #breaks out of loop and leaves the shop if the character says no
+                else:
+                    print("Choose a valid response.")
+        elif choice=='w':
+            print("You keep walking.")
+            break
+            #same thing as before
+        else:
+            print("Choose a valid response.")
+
+    print('---')
+    print('As you walk, you see someone approaching in the distance.')
+    #prints dialogue that lets player know there's someone to talk to
+    while True:
+        choice=(input('Talk ("t"), continue walking ("w") or shop ("s")? ')).lower()
+        #now gives option to talk too
+        if choice=='s':
+        #same process/documentation as before
+            print("You have entered the shop.")
+            print(inventory)
+            print("5 coins for an apple.")
+            while True:
+                shop=input('Would you like to buy apples? y/n ').lower()
+                if shop=='y':
+                    apple_amount=int((input('How many apples? # ')))
+                    if inventory['coins']>=apple_amount*5:
+                        inventory['apples']+=apple_amount
+                        inventory['coins']-=apple_amount*5
+                        print(inventory)
+                        print("You have exited the shop.")
+                        break
+                    else:
+                        print("You don't have enough money.")
+                        print("You have exited the shop.")
+                        break
+
+                elif shop=='n':
+                    print("You have exited the shop.")
+                    break
+                else:
+                    print("Choose a valid response.")
+            #same shopping loop
+        elif choice=='w':
+        #same process/documentation as before
+            print("You keep walking.")
+            break
+        elif choice=='t':
+        #lets the character talk to the Resident
+            print("You choose to talk to the stranger.")
+            print("---")
+            introduce(judas)
+            #calls introduce function
+            print("---")
+            print("Judas vanishes.")
+            print('---')
+            choice=(input('Continue walking ("w") or shop ("s")? ')).lower()
+            if choice=='s':
+                print("You have entered the shop.")
+                print(inventory)
+                print("5 coins for an apple.")
+                while True:
+                    shop=input('Would you like to buy apples? y/n ').lower()
+                    if shop=='y':
+                        apple_amount=int((input('How many apples? # ')))
+                        if inventory['coins']>=apple_amount*5:
+                            inventory['apples']+=apple_amount
+                            inventory['coins']-=apple_amount*5
+                            print(inventory)
+                            print("You have exited the shop.")
+                            break
+                        else:
+                            print("You don't have enough money.")
+                            print("You have exited the shop.")
+                            break
+
+                    elif shop=='n':
+                        print("You have exited the shop.")
+                        break
+                    else:
+                        print("Choose a valid response.")
+            elif choice=='w':
+                print("You keep walking.")
+                break
+            else:
+                print("Choose a valid response.")
+        #lets the character proceed after talking by going back to the original loop
+
+    print('---')
+    print(funny['nine'])
+    print('---')
+    #prints the intermission
+
+    while True:
+        choice=(input('Continue walking ("w") or shop ("s")? ')).lower()
+        if choice=='s':
+            print("You have entered the shop.")
+            print(inventory)
+            print("5 coins for an apple.")
+            while True:
+                shop=input('Would you like to buy apples? y/n ').lower()
+                if shop=='y':
+                    apple_amount=int((input('How many apples? # ')))
+                    if inventory['coins']>=apple_amount*5:
+                        inventory['apples']+=apple_amount
+                        inventory['coins']-=apple_amount*5
+                        print(inventory)
+                        print("You have exited the shop.")
+                        break
+                    else:
+                        print("You don't have enough money.")
+                        print("You have exited the shop.")
+                        break
+
+                elif shop=='n':
+                    print("You have exited the shop.")
+                    break
+                else:
+                    print("Choose a valid response.")
+        elif choice=='w':
+            print("You keep walking.")
+            break
+        else:
+            print("Choose a valid response.")
+    #all the same exact thing
+
+    guard(devil)
+    #calls guard function
+
+    while True:
+        if devil.hp<=0:
+            print('---')
+            print('Devil hp: 0')
+            print('---')
+            print("You've defeated the boss!")
+            #game progresses if boss runs out of hp
+            break
+            #proceeds to the next level
+        elif player.hp<=0:
+            print('---')
+            print("Your hp is 0. Game Over.")
+            print('---')
+            #Game over if player runs out of hp
+            play_level(nine)
+            #calls function to restart the level
+        elif player.hp>0 and devil.hp>0:
+            print(f'Player: hp {player.hp}, Devil: hp {devil.hp}')
+            print('---')
+            while True:
+                battle=input(("Attack ('a') or heal ('h')? ")).lower()
+                #player can choose to attack or heal
+                if battle=='a':
+                #if player chooses to attack, he/she enters a while loop
+                    print('---')
+                    attack(devil)
+                    #calls attack function
+                    print(f"You attack {devil.name2}.")
+                    print('---')
+                    if devil.hp<0:
+                        break
+                        #if the character beats the boss, they proceed to the next level
+                    else:
+                        print(f'Player: {player.hp}, Devil: {devil.hp}')
+                        #prints stats
+                    attack1(player)
+                    #calls attack function
+                    print('---')
+                    print('---')
+                    print('Devil attacks you.')
+                    print('---')
+                    if player.hp<0:
+                        break
+                        #breaks out of the loop if player loses all his/her health
+                    else:
+                        print(f'Player: {player.hp}, Devil: {devil.hp}')
+                        #prints stats
+                        break
+                        #breaks out of the loop
+                elif battle=='h':
+                #if player chooses to heal, the code enters a while loop
+                    print('---')
+                    while True:
+                    #while loop so the player can eat an apple only if he/she has enough
+                        if inventory['apples']>0:
+                            print(f"You ate an apple.")
+                            #has player eat apple if they have apples to eat
+                            heal(player)
+                            #calls heal function
+                            print('---')
+                            print(f'Player hp: {player.hp}, Devil hp: {devil.hp}')
+                            #prints player and boss hp
+                            print('---')
+                            print('---')
+                            break
+                            #breaks out of the function
+                        else:
+                            print("You don't have any apples.")
+                            print('--')
+                            break
+                        #if the player has no apples, this prints
+                else:
+                    print('---')
+                    print("Choose a valid response.")
+                    print('---')
+                #if they type an invalid response, this prints
+play_level(nine)
+#calls the function
+
+print('---')
+print('---')
+print('You pass through the doorway.')
+print('---')
+print('---')
+print("You have escaped Hell. Congratulations.")
+print('---')
+print('---')
+#end game
