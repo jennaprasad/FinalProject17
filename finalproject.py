@@ -54,15 +54,15 @@ class Boss(object):
         self.hp=hp
 #makes a boss class for the player to fight
 
-charon=Boss('Charon', '', 50)
-minos=Boss('Minos', '', 60)
-cereberus=Boss('Cereberus', '', 70)
-plutus=Boss('Plutus', '', 80)
-phlegyas=Boss('Phlegyas', '', 90)
-demon=Boss('Guard Demon', '', 100)
-centaurus=Boss('Centaurus', '', 110)
-geryon=Boss('Geryon', '', 120)
-devil=Boss('Devil', '', 150)
+charon=Boss('Charon', "Hell's Ferryman", 50)
+minos=Boss('Minos', 'Judge of the Souls', 60)
+cereberus=Boss('Cereberus', 'Three Headed Monster', 70)
+plutus=Boss('Plutus', 'God of Death', 80)
+phlegyas=Boss('Phlegyas', 'Gigantic Fiery Rock Monster', 90)
+demon=Boss('Guard Demon', 'Exactly What it Sounds Like', 100)
+centaurus=Boss('Centaurus', 'Father of the Centaurs', 110)
+geryon=Boss('Geryon', 'Half Reptile, Half Beast', 120)
+devil=Boss('Devil', 'Three Faced, Winged Beast Frozen in the Center of Hell', 150)
 #makes 9 bosses (one for each level)
 
 def guard(self):
