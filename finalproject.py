@@ -86,22 +86,22 @@ class Level(object):
         self.description=description
         self.position=position
 #makes a class for the 9 levels
-one=Level('Limbo', 'Level 1', 'insert description here', 1)
-two=Level('Lust', 'Level 2', 'insert description here', 2)
-three=Level('Gluttony', 'Level 3', 'insert description here', 3)
-four=Level('Greed', 'Level 4', 'insert description here', 4)
-five=Level('Wrath', 'Level 5', 'insert description here', 5)
-six=Level('Heresy', 'Level 6', 'insert description here', 6)
-seven=Level('Violence', 'Level 7', 'insert description here', 7)
-eight=Level('Malebolge', 'Level 8', 'insert description here', 8)
-nine=Level('Treachery', 'Level 9', 'insert description here', 8)
+one=Level('Limbo', 'Level 1', 'The Edge of Hell', 1)
+two=Level('Lust', 'Level 2', 'For the Adulterous', 2)
+three=Level('Gluttony', 'Level 3', 'For the Overindulgent', 3)
+four=Level('Greed', 'Level 4', 'For the Selfish', 4)
+five=Level('Wrath', 'Level 5', 'For the Angry', 5)
+six=Level('Heresy', 'Level 6', 'For the Dissenters', 6)
+seven=Level('Violence', 'Level 7', 'For The Killers', 7)
+eight=Level('Malebolge', 'Level 8', 'For the Frauds', 8)
+nine=Level('Treachery', 'Level 9', 'For the Traitors', 8)
 #defines each of the levels as an object in the class
 
 def enter(self):
     print(f"Enter {self.level}: {self.name3}")
 #basically a title screen
 
-funny={'one': 'As you walk, you approach a body of water. You peer over the edge to see what lurks below. Whoops. You slip into the River Acheron. You klutz.', 'two': '', 'three': '', 'four': '', 'five': '', 'six': '', 'seven': '', 'eight': '', 'nine':''}
+funny={'one': 'As you walk, you approach a body of water. You peer over the edge to see what lurks below. Whoops. You slip into the River Acheron. You klutz.', 'two': 'The wind is so strong here. Oops. A gust of wind knocks you over.', 'three': 'This land is extremely slushy. Luckily, you brought snowshoes. You proceed.', 'four': 'You walk past a group of people pushing boulders up a mountain. One of them slips. The boulder seems to be getting closer. Before you can move, it barrels right into you. Ouch.', 'five': "You have been walking for a while, so when you see a river, you decide to have a swim. It's fun until you swim past a skeleton. Ew.", 'six': "You walk past a graveyard. There's a strange orange light coming from inside one of the tombs. You peek inside-- it's on fire. Hell is a weird place.", 'seven': "This place is full of sand. As you walk, the Sun gets hotter and hotter. So does the sand you're walking on. Ow ow ow ow ow your feet are burning run run run.", 'eight': 'This place sucks. Everyone keeps trying to steal your money. Rude.', 'nine':'Ironically, this part of Hell is very cold. So cold that the ground has turned to ice. Whoops. You slip. Still a klutz.'}
 #random intermission thing
 
 
