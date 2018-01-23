@@ -28,15 +28,15 @@ class Resident(object):
         self.bio=bio
         self.gift=gift
 #makes a class for people that the player encounter
-socrates=Resident('Socrates', 'insert dialogue here', '15 coins')
-cleopatra=Resident('Cleopatra', 'insert dialogue here', '15 coins')
-ciacco=Resident('Ciacco', 'insert dialogue here', '15 coins')
-avaricious=Resident('Avaricious', 'insert dialogue here', '15 coins')
-filippo=Resident('Filippo Argenti', 'insert dialogue here', '15 coins')
-epicurus=Resident('Epicurus', 'insert dialogue here', '15 coins')
-alexander=Resident('Alexander the Great', 'insert dialogue here', '15 coins')
-ulysses=Resident('Ulysses', 'insert dialogue here', '15 coins')
-judas=Resident('Judas', 'insert dialogue here', '15 apples')
+socrates=Resident('Socrates', "I'm trapped in Limbo, the outermost circle of Hell. This land holds all those who didn't believe in Heaven", '15 coins')
+cleopatra=Resident('Cleopatra', "I'm trapped in Lust, the second circle of Hell. This land holds all those who let passion guide their actions instead of reason", '15 coins')
+ciacco=Resident('Ciacco', "I'm trapped in Gluttony, the third circle of Hell. This land holds all those who valued material over everything else", '15 coins')
+avaricious=Resident('Avaricious', "I'm trapped in Greed, the fourth circle of Hell. This land holds all those whose desires for wealth and power controlled their lives", '15 coins')
+filippo=Resident('Filippo Argenti', "I'm trapped in Wrath, the fifth circle of Hell. This land holds all those who spent their lives sulking in anger", '15 coins')
+epicurus=Resident('Epicurus', "I'm trapped in Heresy, the outermost circle of Hell. This land holds all those who didn't follow the Christian religion", '15 coins')
+alexander=Resident('Alexander the Great', "I'm trapped in Violence, the seventh circle of Hell. This land holds all those who committed murder while living", '15 coins')
+ulysses=Resident('Ulysses', "I'm trapped in Fraud, the eighth circle of Hell. This land holds all those who used fakeness and falseness to gain power", '15 coins')
+judas=Resident('Judas', "I'm trapped in Treachery, the innermost circle of Hell. This land holds all those who committed treason amongst family, friends, or a collective group of people", '15 apples')
 #makes 9 objects in the class (one for every level)
 
 def introduce(self):
@@ -47,12 +47,12 @@ def introduce(self):
     print(inventory)
 #makes a function giving the Resident something to say to the player and something to give them
 
+#makes a boss class for the player to fight
 class Boss(object):
     def __init__(self, name2, description, hp):
         self.name2=name2
         self.description=description
         self.hp=hp
-#makes a boss class for the player to fight
 
 charon=Boss('Charon', "Hell's Ferryman", 50)
 minos=Boss('Minos', 'Judge of the Souls', 60)
@@ -77,7 +77,7 @@ def guard(self):
 def attack1(player):
     player.hp-=random.randint(7,13)
 
-#makes each boss attack the player with different stats
+#makes each boss attack the player
 
 class Level(object):
     def __init__(self, name3, level, description, position):
